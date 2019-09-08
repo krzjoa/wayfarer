@@ -2,7 +2,7 @@ library(magrittr)
 library(dplyr)
 library(httr)
 
-url <- "https://github.com/qinwf/awesome-r/"
+
 
 #' @title Get link to raw README.md file
 #' @name raw_github_readme
@@ -41,7 +41,10 @@ is_github <- function(url){
     grepl("(https://)?raw.githubusercontent.com", url)
 }
 
-#'
+#' @title Fetch and parse an Awesome List README.md file
+#' @name awesome_list
+#' @description Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
+#' Optionally, the function may fetch some additional data describing libraries hosted on Github.
 awesome_list <- function(url, github.info = FALSE){
 
     if(!is_github(url))
@@ -102,4 +105,9 @@ call_github_api_v3 <- function(user, repo){
 }
 
 awesome_list("https://github.com/qinwf/awesome-r/")
+
+install.packages("pkgdown")
+pkgdown::build_site()
+
+
 
