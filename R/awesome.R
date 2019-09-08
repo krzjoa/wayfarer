@@ -35,7 +35,8 @@ raw_github_readme <- function(url){
 #' @description This functions returns true if link leads us to github.com or raw.githubusercontent.com
 #' @param url Github repo URL
 #' @return Logical value: if URL is from Github?
-#' @example is_github("https://github.com/qinwf/awesome-r/")
+#' @example
+#' is_github("https://github.com/qinwf/awesome-r/")
 is_github <- function(url){
   grepl("(https://)?github.com/", url) |
     grepl("(https://)?raw.githubusercontent.com", url)
