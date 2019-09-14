@@ -3,15 +3,14 @@ library(dplyr)
 library(httr)
 
 #' @title Get link to raw README.md file
-#' @name raw_github_readme
+#' @name github_readme_url
 #' @description This functions checks, if URL is not a link to the raw Github README.md file.
 #' If doesn't, it extracts user and repo names from the URL and then fetches README.md URL using Github API v3.
 #' @param url Github repo URL
 #' @return Dowload URL to README.md
-#' @import dplyr
+#' @import dplyr httr magrittr stringr
 #' @examples
 #' github_readme_url("https://github.com/qinwf/awesome-r/")
-#' github_readme_url(""https://raw.githubusercontent.com/qinwf/awesome-R/master/README.md"")
 #' @export
 github_readme_url <- function(url){
   if(grepl("(https://)?raw.githubusercontent.com.*\\.md", url)) return(url)
@@ -41,70 +40,45 @@ is_github <- function(url){
     grepl("(https://)?raw.githubusercontent.com", url)
 }
 
-#' @title Fetch and parse an Awesome List README.md file
-#' @name awesome_list
-#' @description Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
-#' Optionally, the function may fetch some additional data describing libraries hosted on Github.
-#' @param url URL for Github repository
-#' @param github.topics
-awesome_list <- function(url, github.info = FALSE){
-
-    if(!is_github(url))
-      print(paste0(url, " is not a corect Github URL."))
-
-    # Converting URL to its raw form
-    url <- github_readme_url(url)
-
-    # Fetching markdown from the Web
-    file.content <- suppressWarnings(readLines(url))
-
-    # Parsing markdown list
-    file.content %>%
-      stringr::str_match("\\[(.*?)\\]\\((.*?)\\).?-(.*\\.)") -> awesome.list
-
-    # Removing empty lines
-    awesome.list <- awesome.list %>%
-      na.omit() %>%
-      as.data.frame() %>%
-      `colnames<-`(c("original", "name", "url", "description"))
-
-    # Username & repo
-    awesome.list$url %>%
-      stringr::str_match("github.com\\/(.*)\\/(.*)") %>%
-      as.data.frame() %>%
-      `colnames<-`(c("full.name", "user.name", "repo.name")) %>%
-      select(-full.name) -> awesome.list.urls
-
-    awesome.list <- cbind(awesome.list, awesome.list)
-
-    return(awesome.list)
-}
-
-# Github API v3 -----------------------------------------------------------
-
 #' @title Get basic information about Github repo
 #' @name github_repo_info
+#' @description Get all repo info offered by the main type of Gihub API requests.
 #' @param user character username
 #' @param repo character repo name
+#' @return List of Github repo attributes
+#' @import dplyr httr magrittr
+#' @references
+#' For detailed info see: https://developer.github.com/v3/
 #' @examples
-#' github_topics("qinwf", "awesome-r")
+#' github_repo_info("qinwf", "awesome-r")
 #' @export
-github_repo_info <- function(user, repo){
+github_repo_info <- function(repo.url, user=NA, repo=NA){
+
+  repo.names <- github_extract_user_repo(repo.url)
+  user <- repo.names$user
+  repo <- repo.names$repo
+
   sprintf("http://api.github.com/repos/%s/%s", user, repo) %>%
     GET() %>%
     content()
 }
 
-
 #' @title Get Github Topics for given username and repo
 #' @name github_topics
-#' @description Get Github Topics using Github API v3
+#' @description Get Github Topics using Github API v3.
 #' @param user character username
 #' @param repo character repo name
+#' @return List of Github Topics which describe the repo
+#' @import dplyr httr magrittr
 #' @examples
-#' github_topics("qinwf", "awesome-r")
+#' github_topics("easystats", "see")
 #' @export
-github_topics <- function(user, repo){
+github_topics <- function(repo.url, user=NA, repo=NA){
+
+  repo.names <- github_extract_user_repo(repo.url)
+  user <- repo.names$user
+  repo <- repo.names$repo
+
   sprintf("http://api.github.com/repos/%s/%s/topics", user, repo) %>%
     GET(accept("application/vnd.github.mercy-preview+json")) %>%
     content()
@@ -112,16 +86,18 @@ github_topics <- function(user, repo){
 
 #' @title Get basic info about Github repo
 #' @name github_repo_basic_info
-#' @description Get Github Topics using Github API v3
+#' @description Get basic info about Githb repo, i. e. number of stars, number of forks and topics.
 #' @param user character username
 #' @param repo character repo name
+#' @return Combined basic info from two functions: `github_repo_info` and `github_topics`
+#' @import dplyr httr magrittr
 #' @examples
-#' github_topics("qinwf", "awesome-r")
+#' github_repo_basic_info("tidyverts", "tsibble")
 #' @export
-github_repo_basic_info <- function(user, repo){
+github_repo_basic_info <- function(repo.url, user=NA, repo=NA){
 
-  repo.info <- github_repo_info(user, repo)
-  github.topics <- github_topics(user, repo)
+  repo.info <- github_repo_info(repo.url)
+  github.topics <- github_topics(repo.url)
 
   output <- list(
     # Basic info
@@ -135,6 +111,32 @@ github_repo_basic_info <- function(user, repo){
   return(output)
 }
 
-# awesome_list("https://github.com/qinwf/awesome-r/")
-# install.packages("pkgdown")
-# pkgdown::build_site()
+#' @title Extract user name and repo name from a Github repo URL
+#' @name github_extract_user_repo
+#' @param repo.url A Github repo.url, character
+#' @return List with two values: user.name and repo.name
+#' @example
+#' github_extract_user_repo("https://github.com/strengejacke/sjstats")
+github_extract_user_repo <- function(repo.url){
+  # Strip trailing slash
+  url <- sub("/+$", "", repo.url)
+  url.divided <- stringr::str_match(url, "github.com\\/(.*)\\/(.*)")
+  user.name <- url.divided[,2]
+  repo.name <- url.divided[,3]
+  list(user.name = user.name,
+       repo.name = repo.name)
+}
+
+# .parse_args <- function(repo.url, user, repo){
+#
+#   print(repo.url)
+#   print(user)
+#   print(repo)
+#
+#   if(!is.na(repo.url) & is.na(user) & is.na(repo)){}
+#   else if(is.na(repo.url) & !is.na(user) & !is.na(repo)){
+#     github_extract_user_repo()
+#   } else {
+#     stop("You should pass repo.url or (user and repo)")
+#   }
+# }

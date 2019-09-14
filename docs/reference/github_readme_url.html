@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fetch and parse an Awesome List README.md file — awesome_list • wayfarer</title>
+<title>Get link to raw README.md file — github_readme_url • wayfarer</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,9 @@
 
 
 
-<meta property="og:title" content="Fetch and parse an Awesome List README.md file — awesome_list" />
-<meta property="og:description" content="Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
-Optionally, the function may fetch some additional data describing libraries hosted on Github." />
+<meta property="og:title" content="Get link to raw README.md file — github_readme_url" />
+<meta property="og:description" content="This functions checks, if URL is not a link to the raw Github README.md file.
+If doesn't, it extracts user and repo names from the URL and then fetches README.md URL using Github API v3." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -109,41 +109,40 @@ Optionally, the function may fetch some additional data describing libraries hos
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fetch and parse an Awesome List README.md file</h1>
+    <h1>Get link to raw README.md file</h1>
     
-    <div class="hidden name"><code>awesome_list.Rd</code></div>
+    <div class="hidden name"><code>github_readme_url.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
-Optionally, the function may fetch some additional data describing libraries hosted on Github.</p>
+    <p>This functions checks, if URL is not a link to the raw Github README.md file.
+If doesn't, it extracts user and repo names from the URL and then fetches README.md URL using Github API v3.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>awesome_list</span>(<span class='no'>url</span>, <span class='kw'>github.basic.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='raw_github_readme.html'>github_readme_url</a></span>(<span class='no'>url</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>url</th>
-      <td><p>URL for Github repository</p></td>
-    </tr>
-    <tr>
-      <th>github.basic.info</th>
-      <td><p>Logical; fetch additional basic info about the repo</p></td>
+      <td><p>Github repo URL</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Summarized data frame</p>
+    <p>Dowload URL to README.md</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='raw_github_readme.html'>github_readme_url</a></span>(<span class='st'>"https://github.com/qinwf/awesome-r/"</span>)</div><div class='output co'>#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

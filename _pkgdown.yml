@@ -1,0 +1,13 @@
+destination: docs
+reference:
+- title: Awesome List tools
+  contents:
+    - awesome_list
+- title: Github API v3
+  contents:
+    - github_readme_url
+    - github_repo_info
+    - github_topics
+    - github_repo_basic_info
+    - github_extract_user_repo
+    - is_github

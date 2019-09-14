@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fetch and parse an Awesome List README.md file — awesome_list • wayfarer</title>
+<title>Get Github Topics for given username and repo — github_topics • wayfarer</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,8 @@
 
 
 
-<meta property="og:title" content="Fetch and parse an Awesome List README.md file — awesome_list" />
-<meta property="og:description" content="Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
-Optionally, the function may fetch some additional data describing libraries hosted on Github." />
+<meta property="og:title" content="Get Github Topics for given username and repo — github_topics" />
+<meta property="og:description" content="Get Github Topics using Github API v3." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -109,41 +108,48 @@ Optionally, the function may fetch some additional data describing libraries hos
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fetch and parse an Awesome List README.md file</h1>
+    <h1>Get Github Topics for given username and repo</h1>
     
-    <div class="hidden name"><code>awesome_list.Rd</code></div>
+    <div class="hidden name"><code>github_topics.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Dowloads an Awesome List and transform it to the form of easy-to-use data.frame.
-Optionally, the function may fetch some additional data describing libraries hosted on Github.</p>
+    <p>Get Github Topics using Github API v3.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>awesome_list</span>(<span class='no'>url</span>, <span class='kw'>github.basic.info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>github_topics</span>(<span class='no'>repo.url</span>, <span class='kw'>user</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>repo</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>URL for Github repository</p></td>
+      <th>user</th>
+      <td><p>character username</p></td>
     </tr>
     <tr>
-      <th>github.basic.info</th>
-      <td><p>Logical; fetch additional basic info about the repo</p></td>
+      <th>repo</th>
+      <td><p>character repo name</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Summarized data frame</p>
+    <p>List of Github Topics which describe the repo</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>github_topics</span>(<span class='st'>"easystats"</span>, <span class='st'>"see"</span>)</div><div class='output co'>#&gt; $message
+#&gt; [1] "API rate limit exceeded for 5.172.255.11. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"
+#&gt; 
+#&gt; $documentation_url
+#&gt; [1] "https://developer.github.com/v3/#rate-limiting"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
