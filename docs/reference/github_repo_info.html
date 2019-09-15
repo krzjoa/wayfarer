@@ -140,11 +140,283 @@
     <p>For detailed info see: https://developer.github.com/v3/</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>github_repo_info</span>(<span class='st'>"qinwf"</span>, <span class='st'>"awesome-r"</span>)</div><div class='output co'>#&gt; $message
-#&gt; [1] "API rate limit exceeded for 5.172.255.11. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"
+    <pre class="examples"><div class='input'><span class='fu'>github_repo_info</span>(<span class='st'>"github.com/qinwf/awesome-r"</span>)</div><div class='output co'>#&gt; $id
+#&gt; [1] 22003158
 #&gt; 
-#&gt; $documentation_url
-#&gt; [1] "https://developer.github.com/v3/#rate-limiting"
+#&gt; $node_id
+#&gt; [1] "MDEwOlJlcG9zaXRvcnkyMjAwMzE1OA=="
+#&gt; 
+#&gt; $name
+#&gt; [1] "awesome-R"
+#&gt; 
+#&gt; $full_name
+#&gt; [1] "qinwf/awesome-R"
+#&gt; 
+#&gt; $private
+#&gt; [1] FALSE
+#&gt; 
+#&gt; $owner
+#&gt; $owner$login
+#&gt; [1] "qinwf"
+#&gt; 
+#&gt; $owner$id
+#&gt; [1] 7472151
+#&gt; 
+#&gt; $owner$node_id
+#&gt; [1] "MDQ6VXNlcjc0NzIxNTE="
+#&gt; 
+#&gt; $owner$avatar_url
+#&gt; [1] "https://avatars1.githubusercontent.com/u/7472151?v=4"
+#&gt; 
+#&gt; $owner$gravatar_id
+#&gt; [1] ""
+#&gt; 
+#&gt; $owner$url
+#&gt; [1] "https://api.github.com/users/qinwf"
+#&gt; 
+#&gt; $owner$html_url
+#&gt; [1] "https://github.com/qinwf"
+#&gt; 
+#&gt; $owner$followers_url
+#&gt; [1] "https://api.github.com/users/qinwf/followers"
+#&gt; 
+#&gt; $owner$following_url
+#&gt; [1] "https://api.github.com/users/qinwf/following{/other_user}"
+#&gt; 
+#&gt; $owner$gists_url
+#&gt; [1] "https://api.github.com/users/qinwf/gists{/gist_id}"
+#&gt; 
+#&gt; $owner$starred_url
+#&gt; [1] "https://api.github.com/users/qinwf/starred{/owner}{/repo}"
+#&gt; 
+#&gt; $owner$subscriptions_url
+#&gt; [1] "https://api.github.com/users/qinwf/subscriptions"
+#&gt; 
+#&gt; $owner$organizations_url
+#&gt; [1] "https://api.github.com/users/qinwf/orgs"
+#&gt; 
+#&gt; $owner$repos_url
+#&gt; [1] "https://api.github.com/users/qinwf/repos"
+#&gt; 
+#&gt; $owner$events_url
+#&gt; [1] "https://api.github.com/users/qinwf/events{/privacy}"
+#&gt; 
+#&gt; $owner$received_events_url
+#&gt; [1] "https://api.github.com/users/qinwf/received_events"
+#&gt; 
+#&gt; $owner$type
+#&gt; [1] "User"
+#&gt; 
+#&gt; $owner$site_admin
+#&gt; [1] FALSE
+#&gt; 
+#&gt; 
+#&gt; $html_url
+#&gt; [1] "https://github.com/qinwf/awesome-R"
+#&gt; 
+#&gt; $description
+#&gt; [1] "A curated list of awesome R packages, frameworks and software."
+#&gt; 
+#&gt; $fork
+#&gt; [1] FALSE
+#&gt; 
+#&gt; $url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R"
+#&gt; 
+#&gt; $forks_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/forks"
+#&gt; 
+#&gt; $keys_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/keys{/key_id}"
+#&gt; 
+#&gt; $collaborators_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/collaborators{/collaborator}"
+#&gt; 
+#&gt; $teams_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/teams"
+#&gt; 
+#&gt; $hooks_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/hooks"
+#&gt; 
+#&gt; $issue_events_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/issues/events{/number}"
+#&gt; 
+#&gt; $events_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/events"
+#&gt; 
+#&gt; $assignees_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/assignees{/user}"
+#&gt; 
+#&gt; $branches_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/branches{/branch}"
+#&gt; 
+#&gt; $tags_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/tags"
+#&gt; 
+#&gt; $blobs_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/git/blobs{/sha}"
+#&gt; 
+#&gt; $git_tags_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/git/tags{/sha}"
+#&gt; 
+#&gt; $git_refs_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/git/refs{/sha}"
+#&gt; 
+#&gt; $trees_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/git/trees{/sha}"
+#&gt; 
+#&gt; $statuses_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/statuses/{sha}"
+#&gt; 
+#&gt; $languages_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/languages"
+#&gt; 
+#&gt; $stargazers_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/stargazers"
+#&gt; 
+#&gt; $contributors_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/contributors"
+#&gt; 
+#&gt; $subscribers_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/subscribers"
+#&gt; 
+#&gt; $subscription_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/subscription"
+#&gt; 
+#&gt; $commits_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/commits{/sha}"
+#&gt; 
+#&gt; $git_commits_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/git/commits{/sha}"
+#&gt; 
+#&gt; $comments_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/comments{/number}"
+#&gt; 
+#&gt; $issue_comment_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/issues/comments{/number}"
+#&gt; 
+#&gt; $contents_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/contents/{+path}"
+#&gt; 
+#&gt; $compare_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/compare/{base}...{head}"
+#&gt; 
+#&gt; $merges_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/merges"
+#&gt; 
+#&gt; $archive_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/{archive_format}{/ref}"
+#&gt; 
+#&gt; $downloads_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/downloads"
+#&gt; 
+#&gt; $issues_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/issues{/number}"
+#&gt; 
+#&gt; $pulls_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/pulls{/number}"
+#&gt; 
+#&gt; $milestones_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/milestones{/number}"
+#&gt; 
+#&gt; $notifications_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/notifications{?since,all,participating}"
+#&gt; 
+#&gt; $labels_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/labels{/name}"
+#&gt; 
+#&gt; $releases_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/releases{/id}"
+#&gt; 
+#&gt; $deployments_url
+#&gt; [1] "https://api.github.com/repos/qinwf/awesome-R/deployments"
+#&gt; 
+#&gt; $created_at
+#&gt; [1] "2014-07-19T06:02:47Z"
+#&gt; 
+#&gt; $updated_at
+#&gt; [1] "2019-09-14T20:27:04Z"
+#&gt; 
+#&gt; $pushed_at
+#&gt; [1] "2019-09-12T05:40:19Z"
+#&gt; 
+#&gt; $git_url
+#&gt; [1] "git://github.com/qinwf/awesome-R.git"
+#&gt; 
+#&gt; $ssh_url
+#&gt; [1] "git@github.com:qinwf/awesome-R.git"
+#&gt; 
+#&gt; $clone_url
+#&gt; [1] "https://github.com/qinwf/awesome-R.git"
+#&gt; 
+#&gt; $svn_url
+#&gt; [1] "https://github.com/qinwf/awesome-R"
+#&gt; 
+#&gt; $homepage
+#&gt; [1] "https://awesome-r.com"
+#&gt; 
+#&gt; $size
+#&gt; [1] 1123
+#&gt; 
+#&gt; $stargazers_count
+#&gt; [1] 3670
+#&gt; 
+#&gt; $watchers_count
+#&gt; [1] 3670
+#&gt; 
+#&gt; $language
+#&gt; [1] "R"
+#&gt; 
+#&gt; $has_issues
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $has_projects
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $has_downloads
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $has_wiki
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $has_pages
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $forks_count
+#&gt; [1] 1225
+#&gt; 
+#&gt; $mirror_url
+#&gt; NULL
+#&gt; 
+#&gt; $archived
+#&gt; [1] FALSE
+#&gt; 
+#&gt; $disabled
+#&gt; [1] FALSE
+#&gt; 
+#&gt; $open_issues_count
+#&gt; [1] 13
+#&gt; 
+#&gt; $license
+#&gt; NULL
+#&gt; 
+#&gt; $forks
+#&gt; [1] 1225
+#&gt; 
+#&gt; $open_issues
+#&gt; [1] 13
+#&gt; 
+#&gt; $watchers
+#&gt; [1] 3670
+#&gt; 
+#&gt; $default_branch
+#&gt; [1] "master"
+#&gt; 
+#&gt; $network_count
+#&gt; [1] 1225
+#&gt; 
+#&gt; $subscribers_count
+#&gt; [1] 387
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -162,7 +434,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by <a href='https://krzjoa.github.io'>Krzysztof Joachimiak</a>.</p>
 </div>
 
 <div class="pkgdown">

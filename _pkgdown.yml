@@ -1,8 +1,14 @@
 destination: docs
+authors:
+  Krzysztof Joachimiak:
+    href: https://krzjoa.github.io
 reference:
 - title: Awesome List tools
+  description: Methods awesome_list and diff_awesome_lists use Gihub API v3, which has limited (50 times per hour) number of request if not authenticated.
   contents:
     - awesome_list
+    - diff_awesome_lists
+    - as_mardkown_url_list
 - title: Github API v3
   contents:
     - github_readme_url

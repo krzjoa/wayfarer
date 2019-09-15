@@ -33,7 +33,8 @@ github_readme_url <- function(url){
 #' @description This functions returns true if link leads us to github.com or raw.githubusercontent.com
 #' @param url Github repo URL
 #' @return Logical value: if URL is from Github?
-#' @example
+#' @import dplyr httr magrittr
+#' @examples
 #' is_github("https://github.com/qinwf/awesome-r/")
 is_github <- function(url){
   grepl("(https://)?github.com/", url) |
@@ -50,7 +51,7 @@ is_github <- function(url){
 #' @references
 #' For detailed info see: https://developer.github.com/v3/
 #' @examples
-#' github_repo_info("qinwf", "awesome-r")
+#' github_repo_info("github.com/qinwf/awesome-r")
 #' @export
 github_repo_info <- function(repo.url, user=NA, repo=NA){
 
@@ -71,7 +72,7 @@ github_repo_info <- function(repo.url, user=NA, repo=NA){
 #' @return List of Github Topics which describe the repo
 #' @import dplyr httr magrittr
 #' @examples
-#' github_topics("easystats", "see")
+#' github_topics("github.com/easystats/see")
 #' @export
 github_topics <- function(repo.url, user=NA, repo=NA){
 
@@ -92,7 +93,7 @@ github_topics <- function(repo.url, user=NA, repo=NA){
 #' @return Combined basic info from two functions: `github_repo_info` and `github_topics`
 #' @import dplyr httr magrittr
 #' @examples
-#' github_repo_basic_info("tidyverts", "tsibble")
+#' github_repo_basic_info("github.com/tidyverts/tsibble")
 #' @export
 github_repo_basic_info <- function(repo.url, user=NA, repo=NA){
 
@@ -115,7 +116,8 @@ github_repo_basic_info <- function(repo.url, user=NA, repo=NA){
 #' @name github_extract_user_repo
 #' @param repo.url A Github repo.url, character
 #' @return List with two values: user.name and repo.name
-#' @example
+#' @import dplyr httr magrittr
+#' @examples
 #' github_extract_user_repo("https://github.com/strengejacke/sjstats")
 github_extract_user_repo <- function(repo.url){
   # Strip trailing slash

@@ -18,3 +18,13 @@
 #                     h_color = "#5b8fbc",
 #                     h_size = 3,
 #                     filename = "Trolo.png", dpi=1200) # hexagon border colour
+
+# awesome.list.1 <- awesome_list("https://github.com/r0f1/datascience")
+# awesome.list.2 <- awesome_list("https://github.com/krzjoa/awesome-python-data-science")
+#
+# diff_awesome_lists("https://github.com/r0f1/datascience",
+#                    "https://github.com/krzjoa/awesome-python-data-science") -> dff
+#
+# dff %>% as_mardkown_url_list() -> md
+# md %>% write("trololo.md")
+# View(dff)
