@@ -78,7 +78,7 @@ diff_awesome_lists <- function(url1, url2, names.to.lower=TRUE){
 #' @return String with markodwn-formatted awesome list
 #' @examples
 #' diff_awesome_lists("https://github.com/qinwf/awesome-r/", "https://github.com/rstudio/RStartHere") %>% as_mardkown_url_list()
-as_mardkown_url_list <- function(items){
+as_markdown_url_list <- function(items){
   items %>%
     mutate(md.item = sprintf("* [%s](%s) - %s", name, url, description)) %>%
     .$md.item %>%
