@@ -7,14 +7,14 @@ Wayfarer was created to make waorking with awesome lists easier!
 
 ## Installation
 ```R
-
 remotes::install_github('krzjoa/wayfarer')
-
 ```
 ## Usage
 The simpliest usage scenario is a selection of a set of libraries by comparing two awesome lists.
 ```R
-diff_awesome_lists("https://github.com/qinwf/awesome-r/", "https://github.com/rstudio/RStartHere") %>% 
-  as_mardkown_url_list() %>% 
+awesome.r <- 'https://github.com/qinwf/awesome-r/'
+r.start.here <- 'https://github.com/rstudio/RStartHere'
+diff_awesome_lists(awesome.r, r.start.here) %>% 
+  as_markdown_url_list() %>% 
   write("lacking-items.md")
 ```
