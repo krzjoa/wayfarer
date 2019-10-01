@@ -1,10 +1,7 @@
 # wayfarer <img src='man/figures/logo.png' align="right" height="139" />
 [![Documentation](https://img.shields.io/badge/documentation-wayfarer-orange.svg?colorB=E91E63)](http://krzjoa.github.io/wayfarer)
-
-
 </br>
-Wayfarer was created to make waorking with awesome lists easier!
-
+Wayfarer was created to make working with awesome lists easier!
 ## Installation
 ```R
 remotes::install_github('krzjoa/wayfarer')
